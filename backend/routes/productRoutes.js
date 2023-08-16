@@ -1,6 +1,8 @@
 import express from 'express';
 import Product from '../models/productModel.js';
 import expressAsyncHandler from 'express-async-handler';
+import { isAuth, isAdmin } from '../utils.js';
+
 const productRouter = express.Router();
 
 productRouter.get('/', async (req, res) => {
@@ -12,6 +14,30 @@ productRouter.get('/', async (req, res) => {
 // 2. create api for searching products
 // 3. display results
 const PAGE_SIZE = 3;
+// Manage Products 
+productRouter.get(
+  '/admin',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const { query } = req;
+    const page = query.page || 1;
+    const pageSize = query.pageSize || PAGE_SIZE;
+
+    const products = await Product.find()
+      .skip(pageSize * (page - 1))
+      .limit(pageSize);
+    const countProducts = await Product.countDocuments();
+    res.send({
+      products,
+      countProducts,
+      page,
+      pages: Math.ceil(countProducts / pageSize),
+    });
+  })
+);
+// Manage Products ends
+
 productRouter.get(
   '/search',
   expressAsyncHandler(async (req, res) => {
