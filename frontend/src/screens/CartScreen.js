@@ -62,7 +62,7 @@ export default function CartScreen() {
                                                 <i className='fas fa-plus-circle'> </i>
                                             </Button>
                                         </Col>
-                                        <Col md={3}>Rs {item.price}</Col>
+                                        <Col md={3}>${item.price}</Col>
                                         <Col md={2}>
                                             <Button variant='light' onClick={()=>removeItemHandler(item)} >
                                                 <i className='fas fa-trash'> </i>
@@ -81,7 +81,7 @@ export default function CartScreen() {
                             <ListGroup.Item variant='flush'>
                                 <h3>
                                     Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
-                                    items):Rs{' '}
+                                    items):${' '}
                                     {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
                                 </h3>
                             </ListGroup.Item>

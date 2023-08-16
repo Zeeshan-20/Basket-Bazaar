@@ -34,7 +34,7 @@ export default function Product(props) {
                     <Card.Title>{product.name}</Card.Title>
                 </Link>
                 <Rating rating={product.rating} numReviews={product.numReviews} />
-                <Card.Text>Rs {product.price}</Card.Text>
+                <Card.Text>${product.price}</Card.Text>
                 {product.countInStock === 0? <Button variant='light' disabled>Out of Stock</Button>
                 :<Button id='add_cart' onClick={() => addToCartHandler(product)}>Add To Cart</Button>}
             </Card.Body>

@@ -86,7 +86,7 @@ export default function ProductScreen() {
                                 <ListGroup.Item>
                                     <Rating rating={product.rating} numReviews={product.numReviews} />
                                 </ListGroup.Item>
-                                <ListGroup.Item>Price : Rs {product.price}</ListGroup.Item>
+                                <ListGroup.Item>Price :${product.price}</ListGroup.Item>
                                 <ListGroup.Item>
                                     <p>Description:<p>{product.description}</p></p>
                                 </ListGroup.Item>
@@ -99,7 +99,7 @@ export default function ProductScreen() {
                                         <ListGroup.Item>
                                             <Row>
                                                 <Col>Price:</Col>
-                                                <Col>Rs {product.price}</Col>
+                                                <Col>${product.price}</Col>
                                             </Row>
                                         </ListGroup.Item>
                                         <ListGroup.Item>
