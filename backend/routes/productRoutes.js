@@ -61,6 +61,23 @@ productRouter.put(
 
 );
 // Implement Update Product end
+//Delete Product
+productRouter.delete(
+  '/:id',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+      await product.deleteOne();
+      res.send({ message: 'Product Deleted' });
+    } else {
+      res.status(404).send({ message: 'Product Not Found' });
+    }
+  })
+);
+//Delete Product end
+
 
 // Create Search Screen
 // 1. show filters
