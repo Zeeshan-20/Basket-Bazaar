@@ -7,6 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { HelmetProvider } from 'react-helmet-async'
 import { StoreProvider } from './store';
 import {  PayPalScriptProvider  } from'@paypal/react-paypal-js';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -31,7 +31,7 @@ import ProductEditScreen from "./screens/ProductEditScreen";
 import OrderListScreen from "./screens/OrderListScreen";
 import UserListScreen from "./screens/UserListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
-
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
@@ -63,21 +63,22 @@ function App() {
           sidebarIsOpen
             ? 'd-flex flex-column site-container active-cont'
             : 'd-flex flex-column site-container'
-        }
+        } id="whole-body"
       >
         <ToastContainer position="bottom-center" limit={1} />
         <header >
-          <Navbar bg="dark" variant="dark" expand="lg">
+        {/* bg="dark" variant="dark"  */}
+          <Navbar expand="lg" id="navbar-color">
             <Container>
-              {/* for sidebar  */}
-              <Button
-                variant="dark"
+              {/* for sidebar variant="dark" */}
+              <Button id="navbar-btn" className="navbar-hov"
+                
                 onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
               >
                 <i className="fas fa-bars"></i>
               </Button>
               {/* side bar end  */}
-              <LinkContainer to="/"><Navbar.Brand>Basket Bazaar</Navbar.Brand></LinkContainer>
+              <LinkContainer to="/"><Navbar.Brand id="navbar-heading">Basket Bazaar</Navbar.Brand></LinkContainer>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 {/* search box */}
@@ -85,7 +86,7 @@ function App() {
                 {/* search box end */}
                 <Nav className="me-auto w-100 justify-content-end" >
                   <Link to='/cart' className="nav-link">
-                    Cart
+                  <ShoppingCartIcon id="cart-icon"/>
                     {cart.cartItems.length > 0 && (
                       <Badge pill bg="danger">
                         {cart.cartItems.length}
@@ -95,14 +96,14 @@ function App() {
                   {userInfo ?
                     <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
                       <LinkContainer to='/profile'>
-                        <NavDropdown.Item>User Profile</NavDropdown.Item>
+                        <NavDropdown.Item id="basic-nav-dropdown-item">User Profile</NavDropdown.Item>
                       </LinkContainer>
                       <LinkContainer to='/orderhistory'>
-                        <NavDropdown.Item>Order History</NavDropdown.Item>
+                        <NavDropdown.Item id="basic-nav-dropdown-item">Order History</NavDropdown.Item>
                       </LinkContainer>
                       <NavDropdown.Divider />
-                      <Link className="dropdown-item" to="#signout" onClick={signoutHandler}>
-                        Sign Out
+                      <Link className="dropdown-item" to="#signout" onClick={signoutHandler} id="basic-nav-dropdown-item">
+                        <strong>Sign Out</strong>
                       </Link>
                     </NavDropdown> :
                     <Link className='nav-link' to='/signin'>
@@ -111,16 +112,16 @@ function App() {
                   {userInfo && userInfo.isAdmin && (
                     <NavDropdown title="Admin" id="admin-nav-dropdown">
                       <LinkContainer to="/admin/dashboard">
-                        <NavDropdown.Item>Dashboard</NavDropdown.Item>
+                        <NavDropdown.Item id="basic-nav-dropdown-item">Dashboard</NavDropdown.Item>
                       </LinkContainer>
                       <LinkContainer to="/admin/products">
-                        <NavDropdown.Item>Products</NavDropdown.Item>
+                        <NavDropdown.Item id="basic-nav-dropdown-item">Products</NavDropdown.Item>
                       </LinkContainer>
                       <LinkContainer to="/admin/orders">
-                        <NavDropdown.Item>Orders</NavDropdown.Item>
+                        <NavDropdown.Item id="basic-nav-dropdown-item">Orders</NavDropdown.Item>
                       </LinkContainer>
                       <LinkContainer to="/admin/users">
-                        <NavDropdown.Item>Users</NavDropdown.Item>
+                        <NavDropdown.Item id="basic-nav-dropdown-item">Users</NavDropdown.Item>
                       </LinkContainer>
                     </NavDropdown>
                   )}
@@ -156,7 +157,7 @@ function App() {
           </Nav>
         </div>
         {/* side bar end */}
-        <main >
+        <main id="body-color">
           <Container className="mt-3">
             <Routes>
               <Route path="/product/:slug" element={<ProductScreen />} />

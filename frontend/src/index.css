@@ -110,3 +110,95 @@ main {
 .text-bold {
   font-weight: bold;
 }
+.products  {
+font-family: "Helvetica";
+text-decoration: none;
+}
+/* Silder styling */
+#slidertext {
+  color: #ffffff;
+  font-family: "Helvetica";
+  font-style: italic;
+  font-weight: bold;
+  text-transform: uppercase; letter-spacing: 2px;
+}
+#sliderpara{
+  color: #ffffff;
+  font-family: "Helvetica"; 
+  font-style: italic;
+  font-weight: bold;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+/* Navbar  */
+#navbar-color{
+  background-color: #512B81;
+}
+#navbar-heading{
+  color: #ffffff;
+  font-family: 'UBUNTU';
+  font-size: 2rem;
+  font-weight: bold;
+  padding-left: 1rem;
+}
+
+
+#navbar-btn{
+  background-color: #FFFFFF;
+    border-color: #512B81;
+    color: #512B81;
+}
+#navbar-btn:hover{
+  background: linear-gradient(to bottom, #512B81, #9966CC);
+  color: #FFFFFF;
+  filter: brightness(1.2);
+  border-color: #512B81;
+}
+#button-search{
+  color:#ffffff;
+  border-color: #252c37;
+  background-color: #512B81;
+  outline: none;
+}
+#button-search:hover{
+  background: linear-gradient(to bottom, #512B81, #9966CC);
+  color: #FFFFFF;
+  filter: brightness(1.2);
+  outline: none;
+}
+#cart-icon{
+  color: #ffffff;
+  font-size: 1.6rem;
+}
+#cart-icon:hover{
+  color:black;
+}
+#basic-nav-dropdown ,#admin-nav-dropdown{
+  color:white;
+  font-size: 1.2rem;
+  font-family: 'UBUNTU';
+}
+#basic-nav-dropdown:hover ,#admin-nav-dropdown:hover{
+  color: #000000; /* Complementary lavender color for hover */
+  font-weight: bold;
+}
+#basic-nav-dropdown-item {
+  color:black;
+  font-family: 'UBUNTU';
+  font-size: 1rem;
+}
+#basic-nav-dropdown-item:hover{
+  color:#FFFFFF;
+  background-color:#512B81 ;
+  border-radius: 0.5rem;
+}
+
+#basic-nav-dropdown-item.active{
+  color: #000000;
+  background-color: #ffffff;
+}
+
+
+/* Whole body */
+#whole-body{
+  background-color:#F8F8F8;
+}

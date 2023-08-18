@@ -9,7 +9,7 @@ import Product from '../components/Product';
 import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-
+import Slider from '../components/Slider';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -53,6 +53,7 @@ export default function HomeScreen() {
       <Helmet>
         <title>Basket Bazaar</title>
       </Helmet>
+      <Slider/>
       <h1>Featured Product</h1>
       <div className="products">
         {
