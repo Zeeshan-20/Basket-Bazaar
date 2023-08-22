@@ -29,43 +29,48 @@ export default function CartScreen() {
         navigate('/signin?redirect=/shipping')
     }
     return (
-        <div>
+        <div className="footer-avoiding">
             <Helmet>
-                <title>Shoppng Cart</title>
+                <title>Shopping Cart</title>
             </Helmet>
-            <h1>Shopping Cart</h1>
+            <h1 id="heading-of-all-section">Shopping Cart</h1>
             <Row>
-                <Col md={8}>
+                <Col md={12} id="extra-sub-heading-of-all-section">
                     {cartItems.length === 0 ?
-                        <MessageBox>
-                            Cart is Empty. <Link to="/">Go Shopping</Link>
+                        <MessageBox variant="light" id="extra-sub-heading-of-all-section">
+                            Cart is Empty. <Link to="/" id="link-color"><strong>Go Shopping</strong></Link>
                         </MessageBox>
                         :
                         <ListGroup>
                             {cartItems.map((item) => (
-                                <ListGroup.Item Key={item._id}>
+                                <ListGroup.Item Key={item._id} >
                                     <Row className='align-items-center'>
-                                        <Col md={4}>
+                                    <Link to={`/product/${item.slug}`} id="product-link-color"> <strong id="product-heading">{item.name}</strong></Link>
+                                        <Col md={4} >
+                                            
                                             <img
                                                 src={item.image}
                                                 alt={item.image}
                                                 className='img-fluid rounded img-thumbnail'
+                                                style={{ width: '150px', height: '150px' }}
                                             ></img>{' '}
-                                            <Link to={`/product/${item.slug}`}>{item.name}</Link>
+                                            {/* <Link to={`/product/${item.slug}`} id="product-link-color"> <strong>{item.name}</strong></Link> */}
                                         </Col>
                                         <Col md={3}>
-                                            <Button variant='light' disabled={item.quantity === 1} onClick={() => updateCartHandler(item, item.quantity - 1)}>
-                                                <i className='fas fa-minus-circle'> </i>
+                                            <Button variant='light'id="cartScreen-fa-btn" disabled={item.quantity === 1} onClick={() => updateCartHandler(item, item.quantity - 1)}>
+                                                <i className='fas fa-solid fa-minus' id="cartScreen-fa"> </i>
                                             </Button>{' '}
                                             <span>{item.quantity}</span>{' '}
-                                            <Button variant='light' disabled={item.quantity === item.countInStock} onClick={() => updateCartHandler(item, item.quantity + 1)}>
-                                                <i className='fas fa-plus-circle'> </i>
+                                            <Button variant='light'id="cartScreen-fa-btn" disabled={item.quantity === item.countInStock} onClick={() => updateCartHandler(item, item.quantity + 1)}>
+                                                {/* <i className='fas fa-plus-circle' id="cartScreen-fa"> </i> */}
+                                                <i className='fas fa-solid fa-plus' id="cartScreen-fa"> </i>
                                             </Button>
                                         </Col>
                                         <Col md={3}>${item.price}</Col>
                                         <Col md={2}>
-                                            <Button variant='light' onClick={()=>removeItemHandler(item)} >
-                                                <i className='fas fa-trash'> </i>
+                                            <Button variant='light' id="trash-button" onClick={()=>removeItemHandler(item)} >
+                                                <i className='fas fa-solid fa-trash'> </i>
+                                                
                                             </Button>
                                         </Col>
                                     </Row>
@@ -74,26 +79,33 @@ export default function CartScreen() {
                             ))}
                         </ListGroup>
                     }
-                </Col>
-                <Col md={4}>
-                    <Card>
-                        <Card.Body>
-                            <ListGroup.Item variant='flush'>
-                                <h3>
+                {/* </Col> */}
+                {/* <Col md={4}> */}
+                    <Card className='my-3 mb-4'>
+                        <Card.Body >
+                            <ListGroup.Item variant='flush' display="inline-block">
+                                <Row>
+                                <Col md={6}>
+                                <h3 id="extra-heading-of-all-section">
                                     Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
-                                    items):${' '}
+                                    items):{' '}$
                                     {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
                                 </h3>
-                            </ListGroup.Item>
-                            <ListGroup.Item variant='flush'>
+                                </Col>
+                                
+                            {/* </ListGroup.Item>
+                            <ListGroup.Item variant='flush'> */}
+                            <Col md={6}>
                                 <div className='d-grid'>
                                     <Button type="button" 
-                                    variant='primary'
+                                    variant='light' id="product-button"
                                     onClick={checkoutHandler}
                                      disabled={cartItems.length === 0}>
                                         Proceed to Checkout
                                     </Button>
                                 </div>
+                                </Col>
+                                </Row>
                             </ListGroup.Item>
                         </Card.Body>
                     </Card>

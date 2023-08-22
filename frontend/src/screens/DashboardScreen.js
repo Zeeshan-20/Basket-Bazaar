@@ -53,8 +53,8 @@ export default function DashboardScreen() {
       }, [userInfo]);
     
       return (
-        <div>
-          <h1>Dashboard</h1>
+        <div className="footer-avoiding">
+          <h1 id="heading-of-all-section">Dashboard</h1>
           {loading ? (
             <LoadingBox />
           ) : error ? (
@@ -101,7 +101,7 @@ export default function DashboardScreen() {
                 </Col>
               </Row>
               <div className="my-3">
-                <h2>Sales</h2>
+                <h2 id="sub-heading-of-all-section">Sales</h2>
                 {summary.dailyOrders.length === 0 ? (
                   <MessageBox>No Sale</MessageBox>
                 ) : (
@@ -118,7 +118,7 @@ export default function DashboardScreen() {
                 )}
               </div>
               <div className="my-3">
-                <h2>Categories</h2>
+                <h2 id="sub-heading-of-all-section">Categories</h2>
                 {summary.productCategories.length === 0 ? (
                   <MessageBox>No Category</MessageBox>
                 ) : (

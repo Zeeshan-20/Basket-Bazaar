@@ -49,11 +49,11 @@ export default function OrderHistoryScreen() {
         fetchData();
     }, [userInfo]);
     return (
-        <div>
+        <div className="footer-avoiding">
             <Helmet>
                 <title>Order History</title>
             </Helmet>
-            <h1>Order History</h1>
+            <h1 id="heading-of-all-section">Order History</h1>
             {loading ? (
                 <LoadingBox></LoadingBox>
             ) : error ? (

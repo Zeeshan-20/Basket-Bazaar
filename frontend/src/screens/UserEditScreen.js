@@ -90,11 +90,12 @@ export default function UserEditScreen() {
         }
     };
     return (
+        <div className='footer-avoiding'>
         <Container className="small-container">
             <Helmet>
                 <title>Edit User {userId}</title>
             </Helmet>
-            <h1>Edit User {userId}</h1>
+            <h1 id="heading-of-all-section">Edit User {userId}</h1>
 
             {loading ? (
                 <LoadingBox></LoadingBox>
@@ -104,7 +105,7 @@ export default function UserEditScreen() {
                 <Form onSubmit={submitHandler}>
                     <Form.Group className="mb-3" controlId="name">
                         <Form.Label>Name</Form.Label>
-                        <Form.Control
+                        <Form.Control id="profileScreen-adjusments"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             required
@@ -112,7 +113,7 @@ export default function UserEditScreen() {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="email">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control
+                        <Form.Control id="profileScreen-adjusments"
                             value={email}
                             type="email"
                             onChange={(e) => setEmail(e.target.value)}
@@ -120,7 +121,7 @@ export default function UserEditScreen() {
                         />
                     </Form.Group>
 
-                    <Form.Check
+                    <Form.Check 
                         className="mb-3"
                         type="checkbox"
                         id="isAdmin"
@@ -130,7 +131,7 @@ export default function UserEditScreen() {
                     />
 
                     <div className="mb-3">
-                        <Button disabled={loadingUpdate} type="submit">
+                        <Button disabled={loadingUpdate} type="submit" id="sign-style-btn" variant="dark">
                             Update
                         </Button>
                         {loadingUpdate && <LoadingBox></LoadingBox>}
@@ -138,5 +139,6 @@ export default function UserEditScreen() {
                 </Form>
             )}
         </Container>
+        </div>
     );
 }

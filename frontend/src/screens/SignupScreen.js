@@ -51,39 +51,41 @@ export default function SignupScreen() {
         }
     }, [navigate, redirect, userInfo]);
     return (
+        <div className='footer-avoiding'>
         <Container className="small-container" id="id-small-conatiner">
             <Helmet>
                 <title>Sign Up</title>
             </Helmet>
-            <h1 className='my-3'>Sign Up</h1>
+            <h1 className='my-3' id="sign-style">Sign Up</h1>
             <Form onSubmit={submitHandler}>
                 <Form.Group className='mb-3' controlId='name' >
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label id="sign-style1">Name</Form.Label>
                     <Form.Control required onChange={(e) => setName(e.target.value)} />
                 </Form.Group>
 
                 <Form.Group className='mb-3' controlId='email' >
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label id="sign-style1">Email</Form.Label>
                     <Form.Control type='email' required onChange={(e) => setEmail(e.target.value)} />
                 </Form.Group>
                 <Form.Group className='mb-3' controlId='password' >
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label id="sign-style1">Password</Form.Label>
                     <Form.Control type='password' required onChange={(e) => setPassword(e.target.value)} />
                 </Form.Group>
 
                 <Form.Group className='mb-3' controlId='confirmPassword' >
-                    <Form.Label>Confirm Password</Form.Label>
+                    <Form.Label id="sign-style1">Confirm Password</Form.Label>
                     <Form.Control type='password' required onChange={(e) => setConfirmPassword(e.target.value)} />
                 </Form.Group>
 
-                <div className='mb-3'>
-                    <Button type='submit'>Sign Up</Button>
+                <div className='mb-3' id="sign-style-btn">
+                    <Button type='submit' id="sign-style-btn" variant="dark">Sign Up</Button>
                 </div>
-                <div className='mb-3'>
+                <div className='mb-3'id="sign-style-btn">
                     Already have an account?{' '}
                     <Link to={`/signin?redirect=${redirect}`}>Sign-In</Link>
                 </div>
             </Form>
         </Container>
+        </div>
     )
 }

@@ -70,42 +70,45 @@ export default function ProductScreen() {
             :
             error ? <MessageBox variant="danger">{error}</MessageBox>
                 :
-                <div>
+                <div className="footer-avoiding">
                     <Row>
+                    <div id="Product-Screen-Heading"><strong>{product.name}</strong></div>
                         <Col md={6}>
-                            <img className="img-large" src={product.image} alt={product.name}>
+                            <img className="img-large" id="Product-Screen-Image"src={product.image} alt={product.name}>
                             </img>
                         </Col>
-                        <Col md={3}>
+                        <Col md={3} >
+                            <Card>
+                        <Card.Body>
                             <ListGroup variant='flush'>
-                                <ListGroup.Item>
                                     <Helmet>
                                         <title>{product.name}</title>
                                     </Helmet>
-                                </ListGroup.Item>
-                                <ListGroup.Item>
+                                <ListGroup.Item id="product-rating">
                                     <Rating rating={product.rating} numReviews={product.numReviews} />
                                 </ListGroup.Item>
-                                <ListGroup.Item>Price :${product.price}</ListGroup.Item>
+                                <ListGroup.Item id="product-price"><strong>Price :</strong>${product.price}</ListGroup.Item>
                                 <ListGroup.Item>
-                                    <p>Description:<p>{product.description}</p></p>
+                                    <p id="product-price"><strong>Description:</strong>{product.description}</p>
                                 </ListGroup.Item>
                             </ListGroup>
+                            </Card.Body>
+                            </Card>
                         </Col>
                         <Col md={3}>
                             <Card>
                                 <Card.Body>
                                     <ListGroup variant="flush">
                                         <ListGroup.Item>
-                                            <Row>
-                                                <Col>Price:</Col>
-                                                <Col>${product.price}</Col>
+                                            <Row id="product-price">
+                                                <Col > <strong> Price:</strong></Col>
+                                                <Col >${product.price}</Col>
                                             </Row>
                                         </ListGroup.Item>
                                         <ListGroup.Item>
-                                            <Row>
-                                                <Col>Status:</Col>
-                                                <Col>{product.countInStock > 0 ?
+                                            <Row id="product-price">
+                                                <Col > <strong>Status:</strong></Col>
+                                                <Col >{product.countInStock > 0 ?
                                                     <Badge bg="success">In Stock</Badge>
                                                     : <Badge bg="danger">Unavilable</Badge>}</Col>
                                             </Row>
@@ -113,7 +116,7 @@ export default function ProductScreen() {
                                         {product.countInStock > 0 && (
                                             <ListGroup.Item>
                                                 <div className='d-grid'>
-                                                    <Button onClick={addToCartHandler} variant='primary'>
+                                                    <Button onClick={addToCartHandler} variant='light' id="product-button"  >
                                                         Add To Cart
                                                     </Button>
                                                 </div>

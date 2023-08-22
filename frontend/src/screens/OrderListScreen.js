@@ -88,11 +88,11 @@ export default function OrderListScreen() {
   };
 
   return (
-    <div>
+    <div className="footer-avoiding">
       <Helmet>
         <title>Orders</title>
       </Helmet>
-      <h1>Orders</h1>
+      <h1 id="heading-of-all-section">Orders</h1>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {loading ? (
         <LoadingBox></LoadingBox>

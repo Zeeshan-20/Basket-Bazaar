@@ -39,7 +39,7 @@ export default function PlaceOrderScreen() {
     cart.itemsPrice = round2(
         cart.cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
     );
-    cart.shippingPrice = cart.itemsPrice > 100 ? round2(0) : round2(10);
+    cart.shippingPrice = cart.itemsPrice > 20 ? round2(0) : round2(10);
     cart.taxPrice = round2(0.15 * cart.itemsPrice);
     cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
 
@@ -80,88 +80,89 @@ export default function PlaceOrderScreen() {
         }
     }, [cart, navigate]);
     return (
-        <div>
+        <div className="footer-avoiding">
             <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
             <Helmet>Preview Order</Helmet>
-            <h1 className="mb-3 my-3">Preview Order</h1>
+            <h1 className="mb-3 my-3" id="heading-of-all-section">Preview Order</h1>
             <Row>
                 <Col md={8}>
                     <Card>
                         <Card.Body>
-                            <Card.Title>Shipping</Card.Title>
-                            <Card.Text>
+                            <Card.Title id="extra-heading-of-all-section">Shipping</Card.Title>
+                            <Card.Text id="extra-sub-heading-of-all-section">
                                 <strong>Name:</strong>{cart.shippingAddress.fullName} <br />
                                 <strong>Address:</strong>{cart.shippingAddress.address},{cart.shippingAddress.city},{cart.shippingAddress.postalCode},{cart.shippingAddress.country}
                             </Card.Text>
-                            <Link to='/shipping' >Edit</Link>
+                            <Link to='/shipping' id="edit-link-style">Edit</Link>
                         </Card.Body>
                     </Card>
                     <Card className="mb-3 my-3">
                         <Card.Body>
-                            <Card.Title>Payment</Card.Title>
-                            <Card.Text>
+                            <Card.Title id="extra-heading-of-all-section">Payment</Card.Title>
+                            <Card.Text id="extra-sub-heading-of-all-section">
                                 <strong>Method:</strong> {Card.paymentMethod}
                             </Card.Text>
-                            <Link to="/payment">Edit</Link>
+                            <Link to="/payment" id="edit-link-style">Edit</Link>
                         </Card.Body>
                     </Card>
                     <Card className='mb-3 my-3'>
                         <Card.Body>
-                            <Card.Title>Items</Card.Title>
+                            <Card.Title id="extra-heading-of-all-section">Items</Card.Title>
                             <ListGroup variant='flush'>
                                 {cart.cartItems.map((item) => (
                                     <Row className='align-items-center'>
+                                        <Link to={`/product/${item.slug}`}id="product-link-color"><div id="product-heading-placeorder">{item.name}</div></Link>
                                         <Col md={6}>
                                             <img src={item.image} alt={item.name}
-                                                className='img-fluid rounded img-thumbnail'
+                                                className='img-fluid rounded img-thumbnail' style={{ width: '190px', height: '190px' }}
                                             ></img>{''}
-                                            <Link to={`/product/${item.slug}`}>{item.name}</Link>
+                                            {/* <Link to={`/product/${item.slug}`}><strong id="product-heading">{item.name}</strong></Link> */}
                                         </Col>
-                                        <Col md={3}><span>{item.quantity}</span></Col>
-                                        <Col md={3}>₹ {item.price}</Col>
+                                        <Col md={3}><span id="extra-sub-heading-of-all-section">{item.quantity}Kg</span></Col>
+                                        <Col md={3} id="number-styling">${item.price}</Col>
                                     </Row>
                                 ))}
                             </ListGroup>
-                            <Link to='/cart'>Edit</Link>
+                            <Link to='/cart'id="edit-link-style">Edit</Link>
                         </Card.Body>
                     </Card>
                 </Col >
                 <Col md={4}>
                     <Card>
                         <Card.Body>
-                            <Card.Title>Order Summary</Card.Title>
+                            <Card.Title id="extra-heading-of-all-section">Order Summary</Card.Title>
                             <ListGroup variant='flush'>
-                                <ListGroup.Item>
-                                    <Row>
+                                <ListGroup.Item >
+                                    <Row id="extra-sub-heading-of-all-section">
                                         <Col>Items</Col>
-                                        <Col>₹{cart.itemsPrice.toFixed(2)}</Col>
+                                        <Col>${cart.itemsPrice.toFixed(2)}</Col>
                                     </Row>
                                 </ListGroup.Item>
                                 <ListGroup.Item>
-                                    <Row>
+                                    <Row id="extra-sub-heading-of-all-section">
                                         <Col>Shipping</Col>
-                                        <Col>₹{cart.shippingPrice.toFixed(2)}</Col>
+                                        <Col>${cart.shippingPrice.toFixed(2)}</Col>
                                     </Row>
                                 </ListGroup.Item>
                                 <ListGroup.Item>
-                                    <Row>
+                                    <Row id="extra-sub-heading-of-all-section"> 
                                         <Col>Tax Price</Col>
-                                        <Col>₹{cart.taxPrice.toFixed(2)}</Col>
+                                        <Col>${cart.taxPrice.toFixed(2)}</Col>
                                     </Row>
                                 </ListGroup.Item>
                                 <ListGroup.Item>
-                                    <Row>
+                                    <Row id="extra-sub-heading-of-all-section">
                                         <Col>
                                             <strong>Order Total</strong>
                                         </Col>
                                         <Col>
-                                            <strong>₹{cart.totalPrice.toFixed(2)}</strong>
+                                            <strong>${cart.totalPrice.toFixed(2)}</strong>
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>
                                 <ListGroup.Item>
                                     <div className='d-grid'>
-                                        <Button type="button" onClick={placeOrderHandler} disabled={cart.cartItems.length === 0}>
+                                        <Button type="button" onClick={placeOrderHandler} disabled={cart.cartItems.length === 0} id="product-button" variant='light'>
                                             Place Order
                                         </Button>
                                     </div>

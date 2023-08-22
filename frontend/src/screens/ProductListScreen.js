@@ -146,16 +146,16 @@ export default function ProductListScreen() {
   };
 
   return (
-    <div>
+    <div className="footer-avoiding">
       {/* Create Product
     create products button */}
       <Row>
         <Col>
-          <h1>Products</h1>
+          <h1 id="heading-of-all-section">Products</h1>
         </Col>
         <Col className="col text-end">
           <div>
-            <Button type="button" onClick={createHandler}>
+            <Button type="button" onClick={createHandler} id="create-style-btn" variant="dark">
               Create Product
             </Button>
           </div>

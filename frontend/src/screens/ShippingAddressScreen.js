@@ -50,17 +50,17 @@ export default function ShippingAddressScreen() {
     navigate('/payment');
   };
   return (
-    <div>
+    <div className='footer-avoiding'>
       <Helmet>
         <title>Shipping Address</title>
       </Helmet>
 
       <CheckoutSteps step1 step2></CheckoutSteps>
       <div className="container small-container">
-        <h1 className="my-3">Shipping Address</h1>
+        <h1 className="my-3" id="heading-of-all-section">Shipping Address</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="fullName">
-            <Form.Label>Full Name</Form.Label>
+            <Form.Label id="from-styling-after-sign">Full Name</Form.Label>
             <Form.Control
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
@@ -100,7 +100,7 @@ export default function ShippingAddressScreen() {
             />
           </Form.Group>
           <div className="mb-3">
-            <Button variant="primary" type="submit">
+            <Button variant="light" type="submit" id="product-button">
               Continue
             </Button>
           </div>

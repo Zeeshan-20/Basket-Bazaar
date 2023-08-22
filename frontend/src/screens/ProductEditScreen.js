@@ -140,11 +140,12 @@ export default function ProductEditScreen() {
 
 
     return (
+        <div className="footer-avoiding">
         <Container className="small-container">
             <Helmet>
                 <title>Edit Product ${productId}</title>
             </Helmet>
-            <h1>Edit Product {productId}</h1>
+            <h1 id="heading-of-all-section">Edit Product {productId}</h1>
 
             {loading ? (
                 <LoadingBox></LoadingBox>
@@ -154,7 +155,7 @@ export default function ProductEditScreen() {
                 <Form onSubmit={submitHandler}>
                     <Form.Group className="mb-3" controlId="name">
                         <Form.Label>Name</Form.Label>
-                        <Form.Control
+                        <Form.Control id="profileScreen-adjusments"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             required
@@ -162,7 +163,7 @@ export default function ProductEditScreen() {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="slug">
                         <Form.Label>Slug</Form.Label>
-                        <Form.Control
+                        <Form.Control id="profileScreen-adjusments"
                             value={slug}
                             onChange={(e) => setSlug(e.target.value)}
                             required
@@ -170,7 +171,7 @@ export default function ProductEditScreen() {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="name">
                         <Form.Label>Price</Form.Label>
-                        <Form.Control
+                        <Form.Control id="profileScreen-adjusments"
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                             required
@@ -178,20 +179,20 @@ export default function ProductEditScreen() {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="image">
                         <Form.Label>Image File</Form.Label>
-                        <Form.Control
+                        <Form.Control id="profileScreen-adjusments"
                             value={image}
                             onChange={(e) => setImage(e.target.value)}
                             required
                         />
                         <Form.Group className="mb-3" controlId="imageFile">
                             <Form.Label>Upload File</Form.Label>
-                            <Form.Control type="file" onChange={uploadFileHandler} />
+                            <Form.Control type="file" onChange={uploadFileHandler} id="profileScreen-adjusments"/>
                             {loadingUpload && <LoadingBox></LoadingBox>}
                         </Form.Group>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="category">
                         <Form.Label>Category</Form.Label>
-                        <Form.Control
+                        <Form.Control id="profileScreen-adjusments"
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
                             required
@@ -207,7 +208,7 @@ export default function ProductEditScreen() {
           </Form.Group> */}
                     <Form.Group className="mb-3" controlId="countInStock">
                         <Form.Label>Count In Stock</Form.Label>
-                        <Form.Control
+                        <Form.Control id="profileScreen-adjusments"
                             value={countInStock}
                             onChange={(e) => setCountInStock(e.target.value)}
                             required
@@ -215,14 +216,14 @@ export default function ProductEditScreen() {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="description">
                         <Form.Label>Description</Form.Label>
-                        <Form.Control
+                        <Form.Control id="profileScreen-adjusments"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             required
                         />
                     </Form.Group>
                     <div className="mb-3">
-                        <Button disabled={loadingUpdate} type="submit">
+                        <Button disabled={loadingUpdate} type="submit" id="sign-style-btn" variant="dark">
                             Update
                         </Button>
                         {loadingUpdate && <LoadingBox></LoadingBox>}
@@ -230,5 +231,6 @@ export default function ProductEditScreen() {
                 </Form>
             )}
         </Container>
+        </div>
     );
 }

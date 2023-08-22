@@ -25,7 +25,7 @@ return (
         aria-label="Search Products"
         aria-describedby="button-search"
       ></FormControl>
-      <Button type="submit" id="button-search">
+      <Button type="submit" id="button-search" variant='light'>
         <i className="fas fa-search"></i>
       </Button>
     </InputGroup>

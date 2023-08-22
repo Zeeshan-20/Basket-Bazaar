@@ -67,18 +67,18 @@ function App() {
       >
         <ToastContainer position="bottom-center" limit={1} />
         <header >
-        {/* bg="dark" variant="dark"  */}
+          {/* bg="dark" variant="dark"  */}
           <Navbar expand="lg" id="navbar-color">
             <Container>
               {/* for sidebar variant="dark" */}
-              <Button id="navbar-btn" className="navbar-hov"
-                
+              <Button id="navbar-btn" className="navbar-hov" variant="light"
+
                 onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
               >
                 <i className="fas fa-bars"></i>
               </Button>
               {/* side bar end  */}
-              <LinkContainer to="/"><Navbar.Brand id="navbar-heading">Basket Bazaar</Navbar.Brand></LinkContainer>
+              <LinkContainer to="/"><Navbar.Brand id="navbar-heading"> <img id="logo-leaf" src="/images/slider/leaf.jpg" alt="logo-img"></img>Earthy Delights</Navbar.Brand></LinkContainer>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 {/* search box */}
@@ -86,7 +86,7 @@ function App() {
                 {/* search box end */}
                 <Nav className="me-auto w-100 justify-content-end" >
                   <Link to='/cart' className="nav-link">
-                  <ShoppingCartIcon id="cart-icon"/>
+                    <ShoppingCartIcon id="cart-icon" />
                     {cart.cartItems.length > 0 && (
                       <Badge pill bg="danger">
                         {cart.cartItems.length}
@@ -106,7 +106,7 @@ function App() {
                         <strong>Sign Out</strong>
                       </Link>
                     </NavDropdown> :
-                    <Link className='nav-link' to='/signin'>
+                    <Link className='nav-link' to='/signin' id="admin-nav-dropdown">
                       Sign In
                     </Link>}
                   {userInfo && userInfo.isAdmin && (
@@ -137,15 +137,15 @@ function App() {
             sidebarIsOpen
               ? 'active-nav side-navbar d-flex justify-content-between flex-wrap flex-column'
               : 'side-navbar d-flex justify-content-between flex-wrap flex-column'
-          }
+          } id="nav-left"
         >
           <Nav className="flex-column text-white w-100 p-2">
-            <Nav.Item>
+            <Nav.Item id="nav-left-heading">
               <strong>Categories</strong>
             </Nav.Item>
             {categories.map((category) => (
               <Nav.Item key={category}>
-                <LinkContainer
+                <LinkContainer id="nav-left-categories"
                   // to={`/search/category=${category}`}
                   to={{ pathname: '/search', search: `category=${category}` }}
                   onClick={() => setSidebarIsOpen(false)}
@@ -234,12 +234,55 @@ function App() {
             </Routes>
           </Container>
         </main>
-        <footer className="text-center">
-          <div><h1>All Rights Reserved</h1></div>
+        <div id="footer-styling">
+        <footer>
+          <div className="container">
+            <div className="sec aboutus">
+              <h2>About Us</h2>
+              <p>Explore Organic Veggies & Fruits with Eco-Friendly Packaging!<br/>Welcome to our e-commerce platform where you can discover a range of organic vegetables and fruits. Plus, we're committed to eco-conscious practices, offering biodegradable packaging options. Embrace a healthier lifestyle while caring for the environment.<br/>Shop now for nature's bounty and sustainable choices!</p>
+              <ul className="sci">
+              <li><Link to="#"><i class="fa fa-brands fa-facebook-f" ></i></Link></li>
+              <li><Link to="#"><i class="fa fa-brands fa-twitter"></i></Link></li>
+              <li><Link to="#"><i class="fa fas fa-brands fa-instagram"></i></Link></li>
+              <li><Link to="#"><i class="fa fas fa-brands fa-youtube"></i></Link></li>
+            </ul>
+            </div>
+            <div className="sec quickLinks">
+              <h2>Quick Links</h2>
+              <ul id="footer-quickLinks">
+                <li><Link to="#">About</Link></li>
+                <li><Link to="#">FAQ</Link></li>
+                <li><Link to="#">Privacy Policy</Link></li>
+                <li><Link to="#">Help</Link></li>
+                <li><Link to="#">Terms & Conditions</Link></li>
+                <li><Link to="#">Contact</Link></li>
+              </ul>
+            </div>
+            <div className="sec contact">
+              <h2>Contact Info</h2>
+              <ul class="info">
+                <li>
+                <span><i class="fa fa-solid fa-location-dot fa-fade" aria-hidden="true" ></i></span>
+                <span>647 Linda Street <br/>Dehradun, PA 19460,<br/>India</span>
+                </li>
+                <li>
+                <span><i class="fa fa-solid fa-phone fa-shake" aria-hidden="true"></i></span>
+                <p><Link to="tel:123456789">+91 234 567 8900</Link><br/><Link to="tel:123456789">+91 567 234 8900</Link></p>
+                </li>
+                <li>
+                <span><i class="fa fa-solid fa-envelope fa-bounce" aria-hidden="true"></i></span>
+                <p> <Link to="mailto:earthydelights123@gmail.com">EarthyDelights@gmail.com</Link></p>
+                </li>
+              </ul>
+            </div>
+          </div>
         </footer>
+        <div class="copyrightText">
+          <p>Copyright © 2023 Earthy Delights. All Rights Reserved</p>
+        </div>
+        </div>
       </div>
     </BrowserRouter>
   );
 }
-
 export default App;

@@ -36,16 +36,16 @@ const reducer = (state, action) => {
 
 const prices = [
     {
-        name: '$1 to $50',
-        value: '1-50',
+        name: '$1 to $3',
+        value: '1-3',
     },
     {
-        name: '$51 to $200',
-        value: '51-200',
+        name: '$4 to $10',
+        value: '4-10',
     },
     {
-        name: '$201 to $1000',
-        value: '201-1000',
+        name: 'Above $10',
+        value: '11-1000',
     },
 ];
 
@@ -128,19 +128,19 @@ export default function SearchScreen() {
         return `/search?category=${filterCategory}&query=${filterQuery}&price=${filterPrice}&rating=${filterRating}&order=${sortOrder}&page=${filterPage}`;
     };
     return (
-        <div>
+        <div className='footer-avoiding'>
             <Helmet>
                 <title>Search Products</title>
             </Helmet>
             <Row>
                 <Col md={3}>
-                    <h3>Department</h3>
+                    <h3 id="extra-heading-of-all-section">Department</h3>
                     <div>
                         <ul>
                             <li>
                                 <Link
                                     className={'all' === category ? 'text-bold' : ''}
-                                    to={getFilterUrl({ category: 'all' })}
+                                    to={getFilterUrl({ category: 'all' })} id="extra-sub-heading-of-all-section"
                                 >
                                     Any
                                 </Link>
@@ -149,7 +149,7 @@ export default function SearchScreen() {
                                 <li key={c}>
                                     <Link
                                         className={c === category ? 'text-bold' : ''}
-                                        to={getFilterUrl({ category: c })}
+                                        to={getFilterUrl({ category: c })} id="extra-sub-heading-of-all-section"
                                     >
                                         {c}
                                     </Link>
@@ -158,12 +158,12 @@ export default function SearchScreen() {
                         </ul>
                     </div>
                     <div>
-                        <h3>Price</h3>
+                        <h3 id="extra-heading-of-all-section">Price</h3>
                         <ul>
                             <li>
                                 <Link
                                     className={'all' === price ? 'text-bold' : ''}
-                                    to={getFilterUrl({ price: 'all' })}
+                                    to={getFilterUrl({ price: 'all' })} id="extra-sub-heading-of-all-section"
                                 >
                                     Any
                                 </Link>
@@ -172,7 +172,7 @@ export default function SearchScreen() {
                                 <li key={p.value}>
                                     <Link
                                         to={getFilterUrl({ price: p.value })}
-                                        className={p.value === price ? 'text-bold' : ''}
+                                        className={p.value === price ? 'text-bold' : ''} id="extra-sub-heading-of-all-section"
                                     >
                                         {p.name}
                                     </Link>
@@ -181,7 +181,7 @@ export default function SearchScreen() {
                         </ul>
                     </div>
                     <div>
-                        <h3>Avg. Customer Review</h3>
+                        <h3 id="extra-heading-of-all-section">Avg. Customer Review</h3>
                         <ul>
                             {ratings.map((r) => (
                                 <li key={r.name}>
@@ -213,7 +213,7 @@ export default function SearchScreen() {
                         <>
                             <Row className="justify-content-between mb-3">
                                 <Col md={6}>
-                                    <div>
+                                    <div id="extra-sub-heading-of-all-section">
                                         {countProducts === 0 ? 'No' : countProducts} Results
                                         {query !== 'all' && ' : ' + query}
                                         {category !== 'all' && ' : ' + category}
@@ -223,21 +223,21 @@ export default function SearchScreen() {
                                             category !== 'all' ||
                                             rating !== 'all' ||
                                             price !== 'all' ? (
-                                            <Button
+                                            <Button 
                                                 variant="light"
-                                                onClick={() => navigate('/search')}
+                                                onClick={() => navigate('/search')} id="small-icon-cross"
                                             >
-                                                <i className="fas fa-times-circle"></i>
+                                                <i className="fas fa-times-circle " id="small-icon-cross-fa"></i>
                                             </Button>
                                         ) : null}
                                     </div>
                                 </Col>
-                                <Col className="text-end">
+                                <Col className="text-end" id="extra-sub-heading-of-all-section">
                                     Sort by{' '}
-                                    <select
+                                    <select 
                                         value={order}
                                         onChange={(e) => {
-                                            navigate(getFilterUrl({ order: e.target.value }));
+navigate(getFilterUrl({ order: e.target.value }));
                                         }}
                                     >
                                         <option value="newest">Newest Arrivals</option>
@@ -248,7 +248,7 @@ export default function SearchScreen() {
                                 </Col>
                             </Row>
                             {products.length === 0 && (
-                                <MessageBox>No Product Found</MessageBox>
+                                <MessageBox variant="dark">No Product Found</MessageBox>
                             )}
 
                             <Row>
@@ -266,7 +266,7 @@ export default function SearchScreen() {
                                         className="mx-1"
                                         to={getFilterUrl({ page: x + 1 })}
                                     >
-                                        <Button
+                                        <Button varinat="dark" id="number-styling"
                                             className={Number(page) === x + 1 ? 'text-bold' : ''}
                                             variant="light"
                                         >

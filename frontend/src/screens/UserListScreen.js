@@ -88,11 +88,11 @@ export default function UserListScreen() {
         }
     };
     return (
-        <div>
+        <div className='footer-avoiding'>
             <Helmet>
                 <title>Users</title>
             </Helmet>
-            <h1>Users</h1>
+            <h1 id="heading-of-all-section">Users</h1>
             {loadingDelete && <LoadingBox></LoadingBox>}
             {loading ? (
                 <LoadingBox></LoadingBox>

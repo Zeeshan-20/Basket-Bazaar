@@ -189,19 +189,19 @@ export default function OrderScreen() {
     return loading ? (
         <LoadingBox></LoadingBox>
     ) : error ? (
-        <MessageBox variant="danger">{error}</MessageBox>
+        <MessageBox variant="danger" id="extra-sub-heading-of-all-section">{error}</MessageBox>
     ) : (
-        <div>
+        <div className="footer-avoiding">
             <Helmet>
                 <title>Order {orderId}</title>
             </Helmet>
-            <h1 className="my-3">Order {orderId}</h1>
+            <h1 className="my-3" id="heading-of-all-section">Order {orderId}</h1>
             <Row>
                 <Col md={8}>
                     <Card className="mb-3">
                         <Card.Body>
-                            <Card.Title>Shipping</Card.Title>
-                            <Card.Text>
+                            <Card.Title id="extra-heading-of-all-section">Shipping</Card.Title>
+                            <Card.Text id="extra-sub-heading-of-all-section">
                                 <strong>Name:</strong> {order.shippingAddress.fullName} <br />
                                 <strong>Address: </strong> {order.shippingAddress.address},
                                 {order.shippingAddress.city}, {order.shippingAddress.postalCode}
@@ -212,14 +212,14 @@ export default function OrderScreen() {
                                     Delivered at {order.deliveredAt}
                                 </MessageBox>
                             ) : (
-                                <MessageBox variant="danger">Not Delivered</MessageBox>
+                                <MessageBox variant="danger" id="extra-sub-heading-of-all-section">Not Delivered</MessageBox>
                             )}
                         </Card.Body>
                     </Card>
                     <Card className="mb-3">
                         <Card.Body>
-                            <Card.Title>Payment</Card.Title>
-                            <Card.Text>
+                            <Card.Title id="extra-heading-of-all-section">Payment</Card.Title>
+                            <Card.Text id="extra-sub-heading-of-all-section">
                                 <strong>Method:</strong> {order.paymentMethod}
                             </Card.Text>
                             {order.isPaid ? (
@@ -234,23 +234,24 @@ export default function OrderScreen() {
 
                     <Card className="mb-3">
                         <Card.Body>
-                            <Card.Title>Items</Card.Title>
+                            <Card.Title id="extra-heading-of-all-section">Items</Card.Title>
                             <ListGroup variant="flush">
                                 {order.orderItems.map((item) => (
                                     <ListGroup.Item key={item._id}>
                                         <Row className="align-items-center">
                                             <Col md={6}>
+                                            <Link to={`/product/${item.slug}`} id="product-link-color"><div id="product-heading-placeorder">{item.name}</div></Link>
                                                 <img
                                                     src={item.image}
                                                     alt={item.name}
-                                                    className="img-fluid rounded img-thumbnail"
+                                                    className="img-fluid rounded img-thumbnail" style={{ width: '190px', height: '190px' }}
                                                 ></img>{' '}
-                                                <Link to={`/product/${item.slug}`}>{item.name}</Link>
+                                                {/* <Link to={`/product/${item.slug}`}>{item.name}</Link> */}
                                             </Col>
-                                            <Col md={3}>
-                                                <span>{item.quantity}</span>
+                                            <Col md={3} >
+                                                <span id="extra-sub-heading-of-all-section">{item.quantity}Kg</span>
                                             </Col>
-                                            <Col md={3}>${item.price}</Col>
+                                            <Col md={3} id="number-styling">${item.price}</Col>
                                         </Row>
                                     </ListGroup.Item>
                                 ))}
@@ -261,28 +262,28 @@ export default function OrderScreen() {
                 <Col md={4}>
                     <Card className="mb-3">
                         <Card.Body>
-                            <Card.Title>Order Summary</Card.Title>
+                            <Card.Title id="extra-heading-of-all-section">Order Summary</Card.Title>
                             <ListGroup variant="flush">
                                 <ListGroup.Item>
-                                    <Row>
+                                    <Row id="extra-sub-heading-of-all-section">
                                         <Col>Items</Col>
                                         <Col>${order.itemsPrice.toFixed(2)}</Col>
                                     </Row>
                                 </ListGroup.Item>
                                 <ListGroup.Item>
-                                    <Row>
+                                    <Row id="extra-sub-heading-of-all-section">
                                         <Col>Shipping</Col>
                                         <Col>${order.shippingPrice.toFixed(2)}</Col>
                                     </Row>
                                 </ListGroup.Item>
                                 <ListGroup.Item>
-                                    <Row>
+                                    <Row id="extra-sub-heading-of-all-section">
                                         <Col>Tax</Col>
                                         <Col>${order.taxPrice.toFixed(2)}</Col>
                                     </Row>
                                 </ListGroup.Item>
                                 <ListGroup.Item>
-                                    <Row>
+                                    <Row id="extra-sub-heading-of-all-section"> 
                                         <Col>
                                             <strong> Order Total</strong>
                                         </Col>

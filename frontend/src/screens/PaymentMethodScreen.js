@@ -29,14 +29,14 @@ export default function PaymentMethodScreen() {
         navigate('/placeorder');
     }
     return (
-        <div>
+        <div className='footer-avoiding'>
             <CheckoutSteps step1 step2 step3></CheckoutSteps>
             <div className="container small-container">
                 <Helmet>
                     <title>Payment Method</title>
                 </Helmet>
-                <h1 className='my-3'>Payment Method</h1>
-                <Form onSubmit={submitHandler}>
+                <h1 className='my-3' id="heading-of-all-section">Payment Method</h1>
+                <Form onSubmit={submitHandler} id="from-styling-after-sign">
                     <div className='mb-3'>
                         <Form.Check
                             type='radio'
@@ -58,7 +58,7 @@ export default function PaymentMethodScreen() {
                         />
                     </div>
                     <div className='mb-3'>
-                        <Button type='submit'>Continue</Button>
+                        <Button type='submit' id="payment-method-button" variant='light'>Continue</Button>
                     </div>
                 </Form>
             </div>
